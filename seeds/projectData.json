@@ -1,18 +1,15 @@
 [
     {
-      "name": "Music Near Me",
-      "description": "A mobile app that will send you notifications whenever a concert is playing in your area.",
-      "needed_funding": 5000
+      "title": "Mashable",
+      "description": "Powered by its own proprietary technology, this tech blog is the go-to source for tech, digital culture, and entertainment content for its influential and dedicated global audience!"
     },
     {
-      "name": "The Ultimate Tech Quiz",
-      "description": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!",
-      "needed_funding": 10000
+      "title": "Nerd Fitness",
+      "description": "Nerd Fitness started in 2009 as a way to help people live a healthy life in any way they can. It's all about getting started, helping beginners, and taking the first step to a healthier lifestyle."
     },
     {
-      "name": "Roll 'Em Up",
-      "description": "A game for Windows and macOS where players move a ball through a series of increasingly challenging mazes.",
-      "needed_funding": 800
+      "title": "GoNintendo",
+      "description": "By sheer weight of posts alone, this is a required RSS feed or bookmark for anyone interested in Nintendo gaming, whether Wii or DS."
     }
   ]
   

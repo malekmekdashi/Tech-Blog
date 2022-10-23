@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Wassup, {{name}}</h2>
+  </div>
+</div>
+
+{{>newBlog}}
+
+{{projects.length}}
+<div class="col-md-12 project-list">
+  <h3>Your most recent fire posts:</h3>
+
+  {{#each projects as |project| }}
+  <div class="row-mb-3 project col-md-10">
+    <div class="card" id="myPost">
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">Remove</button>
+      </div>
+
+      <div class="col-md-8">
+        <h2 id="postHead">
+          <a href="/project/{{projects.id}}">{{project.title}}</a>
+        </h2>
+        <p id="date">{{format_date project.date_created}}</p> 
+      </div>
+      <div class="col-md-12">
+        <p>
+          {{project.description}}
+        </p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{/if}}
+
+<script src="./js/profile.js"></script>
