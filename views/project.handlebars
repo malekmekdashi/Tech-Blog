@@ -1,40 +1,46 @@
-<div class="row"></div>
-    <div class="col-md-6"></div>
-        <h2>Login</h2>
+<div class="text-center">
+  <h2>{{title}}</h2>
+  <p>{{{get_emoji}}}</p>
+  <p>{{description}}</p>
+  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <p>
+    <span for="img" aria-label="money">💲</span>
+    <span class="dollar-amount">{{format_amount }}</span>
 
-        <form class="form login-form"></form>
-            <div class="form-group">
-                <label for="email-login">email:</label>
-            </div>
-            <div class="form-group">
-                <label for="password-login">password:</label>
-                <input class="form-input" type="password" id="password-login"/>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit">login</button>
-            </div>
-        </form>
-    </div>
-        <h2>Signup</h2>
+  </p>
+  <form class="form new-comment-form" data-blogID="{{project.id}}">
 
-        <form class="form signup-form">
-            <div class="form-group">
-                <label for="name-signup">name:</label>
-                <input class="form-input" type="text" id="name-signup" />
-            </div>
-            <div class="form-group">
-                <label for="email-signup">email:</label>
-                <input class="form-input" type="text" id="email-signup" />
-            </div>
-            <div class="form-group">
-                <label for="password-signup">password:</label>
-                <input class="form-input" type="text" id="password-signup" />
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit">signup</button>
-            </div>
-        </form>
+    <div class=" form-group">
+      <textarea class="form-input" id="comment-desc" placeholder="Add a comment" name="comment-desc"></textarea>
+
     </div>
+    <div class="form-group">
+      <button type="submit" class=" btn btn-primary">Create</button>
+    </div>
+  </form>
 </div>
 
-<script src="./js/login.js"></script>
+<script>
+  const newFormHandler = async (event) => {
+    event.preventDefault();
+    console.log("the blog id --- ", event.target.dataset.blogid)
+    const description = document.querySelector('textarea[name="comment-desc"]').value.trim();
+    console.log(description);
+    if (description) {
+      const response = await fetch(`/api/comments`, {
+        method: 'POST',
+        body: JSON.stringify({ description, blog_id: event.target.dataset.blogid }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log(response)
+      if (response.ok) {
+        document.location.reload();
+      } else {
+        alert('Failed to create comment');
+      }
+    }
+  };
+  document.querySelector('#new-comment-form').addEventListener('submit', newFormHandler)
+</script>
